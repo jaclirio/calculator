@@ -6,8 +6,8 @@ class Calculator{
     }
 
     clear() { //AC. Clear screen
-        this.previousOperand=''
-        this.currentOperand = ''
+        this.previousOperand=''  //placeholder
+        this.currentOperand = ''  
         this.operation=undefined
     }
 
@@ -15,14 +15,14 @@ class Calculator{
         this.currentOperand=this.currentOperand.toString().slice(0, -1)
     }
 
-    appendNumber(number) { //Add number from left 
+    appendNumber(number) { //Add number from right 
         if (number === '.' && this.currentOperand.includes('.')) return //not allowing more than 1 decimal point
         this.currentOperand=this.currentOperand.toString() + number.toString() //show current selection
     }
 
     chooseOperation(operation) {
         if (this.currentOperand === '') return //value w/ no operation selected
-        if (this.previousOperand !== '') {
+        if (this.previousOperand !== '') {  //after pressing equals, press any operation
             this.compute()
         }
         this.operation = operation
@@ -107,17 +107,17 @@ operationButtons.forEach(button => {
     })
 })
 
-equalsButton.addEventListener('click', button => {
+equalsButton.addEventListener('click', button => {  //equals
     calculator.compute()
     calculator.updateDisplay()
 })
 
-allClearButton.addEventListener('click', button => {
+allClearButton.addEventListener('click', button => {  //AC
     calculator.clear()
     calculator.updateDisplay()
 })
 
-deleteButton.addEventListener('click', button => {
+deleteButton.addEventListener('click', button => {  //DEL
     calculator.delete()
     calculator.updateDisplay()
 })
